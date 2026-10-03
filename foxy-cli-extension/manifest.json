@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Foxy CLI",
+  "version": "1.0.0",
+  "description": "Recognizes code snippets on any page and injects a collapsible, fully functional terminal emulator directly below them. Run the snippet, then auto-copy a screenshot of the terminal to your clipboard.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "foxy-cli@foxy.cli",
+      "strict_min_version": "115.0"
+    }
+  },
+  "icons": {
+    "48": "icons/icon.svg",
+    "96": "icons/icon.svg"
+  },
+  "permissions": [
+    "clipboardWrite",
+    "clipboardRead",
+    "activeTab",
+    "storage",
+    "scripting",
+    "nativeMessaging"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icons/icon.svg",
+      "96": "icons/icon.svg"
+    },
+    "default_title": "Foxy CLI"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

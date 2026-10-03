@@ -1,0 +1,98 @@
+/* Foxy CLI - popup (mobile/overlay configuration) */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --fc-surface: #0D1117;
+  --fc-subsurface: #161B22;
+  --fc-border: #30363D;
+  --fc-accent: #FF7118;
+  --fc-green: #00FF66;
+  --fc-text: #F0F6FC;
+  --fc-muted: #8B949E;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  width: 360px;
+  background: var(--fc-surface);
+  color: var(--fc-text);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 13px;
+}
+
+.popup { display: flex; flex-direction: column; }
+
+.popup-header {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  background: var(--fc-subsurface);
+  border-bottom: 1px solid var(--fc-border);
+}
+.brand { color: var(--fc-accent); font-weight: 600; font-size: 14px; }
+
+.active-toggle { display: inline-flex; align-items: center; gap: 6px; color: var(--fc-muted); font-size: 12px; cursor: pointer; }
+.active-toggle input { accent-color: var(--fc-accent); }
+
+.counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 14px;
+  border-bottom: 1px solid var(--fc-border);
+}
+.counter-num { font-family: "Fira Code", monospace; font-size: 30px; font-weight: 600; color: var(--fc-green); }
+.counter-label { color: var(--fc-muted); font-size: 12px; margin-top: 2px; }
+
+.config, .shortcuts { padding: 14px; border-bottom: 1px solid var(--fc-border); }
+.config h2, .shortcuts h2 {
+  margin: 0 0 10px 0;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fc-muted);
+  font-weight: 600;
+}
+
+.switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  color: var(--fc-text);
+  font-size: 13px;
+  cursor: pointer;
+}
+.switch-row input[type="checkbox"] { accent-color: var(--fc-accent); width: 16px; height: 16px; }
+.switch-row select {
+  background: var(--fc-surface);
+  color: var(--fc-text);
+  border: 1px solid var(--fc-border);
+  border-radius: 4px;
+  padding: 3px 6px;
+  font-family: "Fira Code", monospace;
+  font-size: 12px;
+}
+
+.shortcuts ul { list-style: none; margin: 0; padding: 0; }
+.shortcuts li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  color: var(--fc-muted);
+  font-size: 12px;
+}
+kbd {
+  font-family: "Fira Code", monospace;
+  font-size: 10px;
+  padding: 2px 5px;
+  border: 1px solid var(--fc-border);
+  border-radius: 3px;
+  background: var(--fc-surface);
+  color: var(--fc-text);
+}

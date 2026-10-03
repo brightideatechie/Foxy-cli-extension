@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Foxy CLI</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup">
+    <header class="popup-header">
+      <span class="brand">🦊 Foxy CLI</span>
+      <label class="active-toggle" title="Enable/disable injection on pages">
+        <input type="checkbox" id="activeToggle" checked>
+        <span>Active</span>
+      </label>
+    </header>
+
+    <div class="counter">
+      <span class="counter-num" id="snippetCount">0</span>
+      <span class="counter-label">snippets found on page</span>
+    </div>
+
+    <section class="config">
+      <h2>Configuration</h2>
+      <label class="switch-row">
+        <span>Auto-Run on Focus</span>
+        <input type="checkbox" id="autoRun">
+      </label>
+      <label class="switch-row">
+        <span>Screenshot to Clipboard</span>
+        <input type="checkbox" id="autoCopy" checked>
+      </label>
+      <label class="switch-row">
+        <span>Shell Target</span>
+        <select id="shellSelect">
+          <option value="bash">bash</option>
+          <option value="zsh">zsh</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="shortcuts">
+      <h2>Quick Shortcuts</h2>
+      <ul>
+        <li><kbd>Enter</kbd> Run command</li>
+        <li><kbd>Esc</kbd> Detach focus</li>
+        <li><kbd>↑</kbd> / <kbd>↓</kbd> History</li>
+        <li><kbd>Ctrl</kbd>+<kbd>L</kbd> Clear terminal</li>
+      </ul>
+    </section>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

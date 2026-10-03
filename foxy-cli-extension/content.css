@@ -1,0 +1,229 @@
+/* Foxy CLI - injected styles for the terminal drawer */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500&display=swap');
+
+.foxy-cli-drawer {
+  --fc-surface: #0D1117;
+  --fc-subsurface: #161B22;
+  --fc-border: #30363D;
+  --fc-accent: #FF7118;
+  --fc-green: #00FF66;
+  --fc-text: #F0F6FC;
+  --fc-muted: #8B949E;
+  --fc-font-mono: "Fira Code", "Cascadia Code", "JetBrains Mono", "SF Mono", Consolas, monospace;
+  --fc-font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+
+  margin: 12px 0 18px 0;
+  border: 1px solid var(--fc-border);
+  border-radius: 8px;
+  background: var(--fc-surface);
+  font-family: var(--fc-font-body);
+  color: var(--fc-text);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+  position: relative;
+}
+
+.foxy-cli-drawer.foxy-focused {
+  border-top-color: var(--fc-accent);
+  box-shadow: 0 -1px 0 0 var(--fc-accent), 0 0 14px -2px rgba(255, 113, 24, 0.55), 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.foxy-cli-drawer.foxy-flash {
+  animation: foxy-flash 0.6s ease-out;
+}
+
+@keyframes foxy-flash {
+  0%   { box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.0), 0 8px 24px rgba(0,0,0,0.35); border-color: var(--fc-border); }
+  20%  { box-shadow: 0 0 0 2px rgba(0, 255, 102, 0.85), 0 0 22px 2px rgba(0, 255, 102, 0.45); border-color: var(--fc-green); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.0), 0 8px 24px rgba(0,0,0,0.35); border-color: var(--fc-border); }
+}
+
+/* Header rail — 32px */
+.foxy-cli-header {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  background: var(--fc-subsurface);
+  border-bottom: 1px solid var(--fc-border);
+  font-size: 11px;
+  user-select: none;
+}
+
+.foxy-cli-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.foxy-cli-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border-radius: 5px;
+  background: rgba(255, 113, 24, 0.14);
+  border: 1px solid rgba(255, 113, 24, 0.45);
+  color: var(--fc-accent);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+
+.foxy-cli-shell {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--fc-muted);
+  font-family: var(--fc-font-mono);
+  font-size: 11px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+.foxy-cli-shell:hover { border-color: var(--fc-border); color: var(--fc-text); }
+
+.foxy-cli-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.foxy-cli-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--fc-muted);
+  font-size: 11px;
+}
+.foxy-cli-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--fc-green);
+  box-shadow: 0 0 6px rgba(0, 255, 102, 0.8);
+}
+
+.foxy-cli-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--fc-muted);
+  cursor: pointer;
+  user-select: none;
+}
+.foxy-cli-toggle input { accent-color: var(--fc-accent); }
+
+.foxy-cli-collapse {
+  background: transparent;
+  border: 1px solid var(--fc-border);
+  color: var(--fc-muted);
+  border-radius: 4px;
+  width: 22px; height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+}
+.foxy-cli-collapse:hover { color: var(--fc-text); border-color: var(--fc-accent); }
+
+/* Terminal stage — 220px expanded */
+.foxy-cli-terminal {
+  height: 220px;
+  overflow-y: auto;
+  background: var(--fc-surface);
+  padding: 10px 12px;
+  font-family: var(--fc-font-mono);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--fc-text);
+  white-space: pre-wrap;
+  word-break: break-word;
+  cursor: text;
+  outline: none;
+}
+.foxy-cli-terminal.foxy-collapsed { height: 0; padding: 0; overflow: hidden; }
+
+.foxy-cli-line { min-height: 19px; }
+.foxy-cli-prompt { color: var(--fc-green); }
+.foxy-cli-cmd { color: var(--fc-text); }
+.foxy-cli-out { color: var(--fc-text); }
+.foxy-cli-err { color: #ff6b6b; }
+.foxy-cli-muted { color: var(--fc-muted); }
+.foxy-cli-accent { color: var(--fc-accent); }
+
+.foxy-cli-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: var(--fc-green);
+  vertical-align: text-bottom;
+  animation: foxy-blink 1s step-end infinite;
+  margin-left: 1px;
+}
+@keyframes foxy-blink { 50% { opacity: 0; } }
+
+.foxy-cli-input {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+}
+
+/* Footer bar — 24px */
+.foxy-cli-footer {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  background: var(--fc-subsurface);
+  border-top: 1px solid var(--fc-border);
+  font-size: 11px;
+  color: var(--fc-muted);
+}
+.foxy-cli-footer-center { font-family: var(--fc-font-mono); font-size: 11px; }
+.foxy-cli-footer kbd {
+  font-family: var(--fc-font-mono);
+  font-size: 10px;
+  padding: 1px 4px;
+  border: 1px solid var(--fc-border);
+  border-radius: 3px;
+  background: var(--fc-surface);
+  color: var(--fc-text);
+}
+.foxy-cli-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  border: 1px solid var(--fc-border);
+  color: var(--fc-muted);
+  border-radius: 4px;
+  padding: 1px 7px;
+  font-size: 11px;
+  cursor: pointer;
+  font-family: var(--fc-font-body);
+}
+.foxy-cli-copy-btn:hover { color: var(--fc-green); border-color: var(--fc-green); }
+
+.foxy-cli-snippet-preview {
+  position: absolute;
+  max-width: 320px;
+  max-height: 120px;
+  overflow: hidden;
+  background: var(--fc-surface);
+  border: 1px solid var(--fc-border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-family: var(--fc-font-mono);
+  font-size: 11px;
+  color: var(--fc-muted);
+  white-space: pre;
+  z-index: 2147483646;
+  pointer-events: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
